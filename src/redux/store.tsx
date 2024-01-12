@@ -3,10 +3,13 @@ import counterReducer from "./features/counterSlice";
 import Logger from "./middleware/Loggler";
 // import logger from "redux-logger";
 
+import todoReducer from "./features/todoSlice";
+
 
 const store = configureStore({
   reducer: {
     counter: counterReducer,
+    todo: todoReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(Logger),
