@@ -1,9 +1,15 @@
-import { Button } from "../ui/button";
+import { useAppSelector } from "@/redux/hook";
 import AddTodoModal from "./AddTodoModal";
 import TodoCard from "./TodoCard";
 import TodoFillter from "./TodoFillter";
+import { useGetTodosQuery } from "@/redux/api/api";
+import { Key } from "react";
 
 const TodoContainer = () => {
+  const todos = useAppSelector((state) => state.todos.todos);
+
+//   const { data: todos, isLoading, isError } = useGetTodosQuery();
+
   return (
     <div>
       <div className="flex justify-between mb-5">
@@ -16,10 +22,16 @@ const TodoContainer = () => {
       </div>
       <div className="bg-primary-gradient w-full rounded-xl h-full p-[5px] ">
         <div className="bg-white p-5 w-full rounded-lg space-y-3">
-          <TodoCard />
-          <TodoCard />
-          <TodoCard />
-          <TodoCard />
+          {todos.map((todo, index) => (
+            <TodoCard
+              key={index}
+              id={todo.id}
+              title={todo.title}
+              description={todo.description}
+              isCompleted={todo.isCompleted}
+            />
+          ))}
+          {/* <TodoCard /> */}
         </div>
         {/* <div className="bg-white p-5 text-2xl font-bold flex justify-center items-center rounded-md">
           <p>There is no task pending</p>
