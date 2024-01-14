@@ -1,18 +1,18 @@
 import { configureStore } from "@reduxjs/toolkit";
-// import counterReducer from "./features/counterSlice";
+import counterReducer from "./features/counterSlice";
 import Logger from "./middleware/Loggler";
-// import logger from "redux-logger";
 
 import todoReducer from "./features/todoSlice";
-import { baseApi } from "./api/api";
+import baseApi from "./api/api";
 
 const store = configureStore({
   reducer: {
-    // counter: counterReducer,
+    counter: counterReducer,
     [baseApi.reducerPath]: baseApi.reducer,
     todos: todoReducer,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(Logger, baseApi.middleware as any),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(baseApi.middleware, Logger),
 });
 
 export default store;

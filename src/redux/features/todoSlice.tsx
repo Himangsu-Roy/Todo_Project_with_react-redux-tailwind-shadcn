@@ -16,7 +16,10 @@ const todoSlice = createSlice({
   initialState,
   reducers: {
     addTodo: (state, action: PayloadAction<TTodo>) => {
-      state.todos.push({ ...action.payload, isCompleted: false });
+      // last added todo data show on the top
+      state.todos.unshift({ ...action.payload, isCompleted: false });
+
+      // state.todos.push({ ...action.payload, isCompleted: false });
     },
     removeTodo: (state, action: PayloadAction<string>) => {
       state.todos = state.todos.filter((todo) => todo.id !== action.payload);
@@ -26,6 +29,8 @@ const todoSlice = createSlice({
       if (todo) {
         todo.isCompleted = !todo.isCompleted;
       }
+      // sort done data
+      state.todos.sort((a, b) => (a.isCompleted ? 1 : -1));
     },
   },
 });

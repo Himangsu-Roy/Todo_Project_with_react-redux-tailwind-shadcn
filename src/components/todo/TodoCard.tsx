@@ -13,12 +13,12 @@ type TTodoCardProps = {
 const TodoCard = ({ id, title, description, isCompleted }: TTodoCardProps) => {
   const dispatch = useAppDispatch();
   const toggleState = (id: string) => {
-      console.log(id); 
-      dispatch(toggleComplete(id))
+    console.log(id);
+    dispatch(toggleComplete(id));
   };
 
   return (
-    <div className="bg-white rounded-md flex justify-between items-center p-3 border">
+    <div className=" bg-white rounded-md flex justify-between items-center p-3 border">
       <input
         onChange={() => toggleState(id)}
         type="checkbox"

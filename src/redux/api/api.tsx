@@ -1,12 +1,12 @@
 import {
   createApi,
   fetchBaseQuery,
-} from "@reduxjs/toolkit/query";
+} from "@reduxjs/toolkit/query/react";
 
 export const baseApi = createApi({
   reducerPath: "baseApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://level-two-assignment-four.vercel.app",
+    baseUrl: "http://localhost:5000",
   }),
   endpoints: (builder) => ({
     getTodos: builder.query({
@@ -24,3 +24,4 @@ export const baseApi = createApi({
 
 
 export const { useGetTodosQuery } = baseApi;
+export default baseApi;
