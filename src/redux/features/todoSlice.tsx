@@ -5,6 +5,7 @@ type TTodo = {
   title: string;
   isCompleted?: boolean;
   description: string;
+  priroty: string;
 };
 
 const initialState: { todos: TTodo[] } = {

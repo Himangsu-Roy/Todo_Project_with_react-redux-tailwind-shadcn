@@ -18,6 +18,7 @@ import { addTodo } from "@/redux/features/todoSlice";
 const AddTodoModal = () => {
   const [task, setTask] = useState("");
   const [description, setDescription] = useState("");
+  const [priroty, setPriroty] = useState("");
   const dispatch = useAppDispatch();
 
   const onSubmit = (e: FormEvent) => {
@@ -28,6 +29,7 @@ const AddTodoModal = () => {
         Math.random().toString(36).substring(2, 15),
       title: task,
       description: description,
+      priroty: priroty,
     };
     dispatch(addTodo(taskDetails));
   };
@@ -55,6 +57,16 @@ const AddTodoModal = () => {
               <Input
                 onBlur={(e) => setTask(e.target.value)}
                 id="task"
+                className="col-span-3"
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="pritoty" className="text-right">
+                Priroty
+              </Label>
+              <Input
+                onBlur={(e) => setPriroty(e.target.value)}
+                id="pritoty"
                 className="col-span-3"
               />
             </div>
